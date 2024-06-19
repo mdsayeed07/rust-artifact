@@ -18,10 +18,11 @@ jobs:
 
     - name: install rust
       run: |
-        curl https://sh.rustup.rs -sSf | sh
         rustc --version
         cargo --version
-
+      
+    # curl https://sh.rustup.rs -sSf | sh
+    
     - name: Build
       run: cargo build --release
 
