@@ -14,5 +14,3 @@ if echo "$RESPONSE" | jq -e ".versions | map(select(.num == \"$CRATE_VERSION\"))
 else
   echo "Crate $CRATE_NAME version $CRATE_VERSION does not exist on crates.io. Proceeding to publish."
 fi
-
-## if: steps.check_version.outcome == 'success'

@@ -27,9 +27,6 @@ jobs:
       
     - name: Login in crates.io
       run: cargo login ${{secrets.CRATES_API_TOKEN}}
-      
-    - name: Running Built Artifact
-      run: ./target/release/rustProjectxxx00xxx
 
     - name: Publish to crates.io
       run: cargo publish

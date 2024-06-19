@@ -1,6 +1,6 @@
 [package]
-name = "rustProjectxxx00xxx"
-version = "0.1.2"
+name = "rustProject00xxx"
+version = "0.1.3"
 authors = ["sayeed and aliraza"]
 edition = "2021"
 description = "Storing artifact into crates.io"
