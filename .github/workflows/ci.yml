@@ -19,11 +19,16 @@ jobs:
         cargo --version
 
     - name: Build
-      run: cargo build --release
+      run: |
+        ls -la
+        cargo build --release
+        ls -la
 
     - name: Check if crate version exists on crates.io
       id: check_version
-      run: ./check_version.sh
+      run: |
+        ls -la
+        ./check_version.sh
 
     - name: Login in crates.io
       if: steps.check_version.outcome == 'failure'
