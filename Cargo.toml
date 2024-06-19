@@ -1,0 +1,9 @@
+[package]
+name = "rustProject123123123"
+version = "0.1.0"
+authors = ["sayeed and aliraza"]
+edition = "2021"
+description = "Storing artifact into crates.io"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
