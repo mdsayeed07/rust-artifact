@@ -15,27 +15,22 @@ jobs:
 
     - name: Verify Rust installation
       run: |
-        ls -la
         rustc --version
         cargo --version
 
     - name: Build
-      run: |
-        ls -la
-        cargo build --release
-        ls -la
+      run: cargo build --release
 
     - name: Check if crate version exists on crates.io
       id: check_version
-      run: |
-        ls -la 
-        ./check_version.sh
+      run: ./check_version.sh
 
     - name: Running Built Artifact
-      run: ./target/release/
+      run: |
+        ls -la ./target/release/
       
     - name: Login in crates.io
-      run: cargo login ${{secrets.CRATES_API_TOKEN}}
+      run: cargo login ${{secrets.CRATES__TOKEN}}
 
     - name: Publish to crates.io
       run: cargo publish
