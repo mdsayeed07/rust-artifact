@@ -24,13 +24,12 @@ jobs:
     - name: Check if crate version exists on crates.io
       id: check_version
       run: ./check_version.sh
-
-    - name: Running Built Artifact
-      run: |
-        ls -la ./target/release/
       
     - name: Login in crates.io
       run: cargo login ${{secrets.CRATES__TOKEN}}
+      
+    - name: Running Built Artifact
+      run: ./target/release/rustProjectxxx00xxx
 
     - name: Publish to crates.io
       run: cargo publish
