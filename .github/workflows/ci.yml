@@ -4,9 +4,6 @@ on:
   push:
     branches: [ "main" ]
 
-# env:
-#   CARGO_TERM_COLOR: always
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,18 +13,22 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v3
 
-    - name: install rust
+    - name: Verify Rust installation
       run: |
         rustc --version
         cargo --version
-      
-    # curl https://sh.rustup.rs -sSf | sh
-    
+
     - name: Build
       run: cargo build --release
 
+    - name: Check if crate version exists on crates.io
+      id: check_version
+      run: ./check_version.sh
+
     - name: Login in crates.io
+      if: steps.check_version.outcome == 'failure'
       run: cargo login ${{secrets.CRATES_API_TOKEN}}
 
     - name: Publish to crates.io
+      if: steps.check_version.outcome == 'failure'
       run: cargo publish
